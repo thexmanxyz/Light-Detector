@@ -11,12 +11,13 @@ const unsigned short PIN_PHOTO_RESISTOR = A0;     // pin number of the photoresi
 const unsigned short AMBIENCE_THRESHOLD1 = 15;    // ambience threshold (1)
 const unsigned short AMBIENCE_THRESHOLD2 = 30;    // ambience threshold (2)
 const unsigned short DEBOUNCE_DELAY = 50;         // the debounce delay to prevent output flickering
+const unsigned int RETRANSMIT_DELAY = 5000;       // the delay after the state is retransmitted
 
 /* Variables */
 
-bool btnState = false;                // the current pushbutton state (debounced)
-bool btnLastState = false;            // the last iteration pushbutton state (debounced)
-bool btnLastRead = false;             // the last iteration pushbutton read state (raw)
+bool btnState = LOW;                     // the current pushbutton state (debounced)
+bool btnLastState = LOW;                 // the last iteration pushbutton state (debounced)
+bool btnLastRead = LOW;                  // the last iteration pushbutton read state (raw)
 
 unsigned long lastTransmissionTime = 0;  // the last transmission time
 unsigned long lastDebounceTime = 0;      // the last button toggle time
@@ -72,7 +73,7 @@ void loop() {
 
   // if button was pressed but is not hold over multiple iterations or
   // got already pressed and the interval since the last press >= 5000ms 
-  if((!btnLastState && btnState) || (lastTransmissionTime > 0 && millis() - lastTransmissionTime >= 5000)){
+  if((!btnLastState && btnState) || (lastTransmissionTime > 0 && millis() - lastTransmissionTime >= RETRANSMIT_DELAY)){
 
     // print ambience string and photo resistor value to serial
     Serial.print("Send Data: ");          // send data (1)
