@@ -5,7 +5,7 @@ Arduino project to detect ambience light with a photo resistor, group the curren
  * Green: Twilight
  * Blue: Night
 
-Additional the current brightness level can be transmitted back to PC via a push button press. The button handling is debounced and the application periodically retransmits the ambience as well as the photo resistor values. 
+Additionally, the current brightness level can be transmitted back to PC via a push button press. The button handling is debounced and the application periodically retransmits the ambience as well as the photo resistor values. 
 
 ## Circuit
 Circuit image created with [Fritzing](http://fritzing.org/).
