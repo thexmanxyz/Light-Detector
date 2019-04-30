@@ -1,4 +1,4 @@
-# Light-Detector
+# Light Detector
 Arduino project to detect ambience light with a photo resistor, group the current brightness into three brackets (day, night or twilight) and lights a corresponding LED:
 
  * Red: Day
