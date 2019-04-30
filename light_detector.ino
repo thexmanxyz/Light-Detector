@@ -71,21 +71,6 @@ void loop() {
     }
   }
 
-  // if button was pressed but is not hold over multiple iterations or
-  // got already pressed and the interval since the last press >= 5000ms 
-  if((!btnLastState && btnState) || (lastTransmissionTime > 0 && millis() - lastTransmissionTime >= RETRANSMIT_DELAY)){
-
-    // print ambience string and photo resistor value to serial
-    Serial.print("Send Data: ");          // send data (1)
-    Serial.print(ambience);               // send data (2)
-    Serial.print(" (");                   // send data (3)
-    Serial.print(photoResistorValue);     // send data (4)
-    Serial.println(")");                  // send data (5)
-
-    // reset last transmission time
-    lastTransmissionTime = millis();
-  }
-
   // ambience threshold1 not met
   if(photoResistorValue <= AMBIENCE_THRESHOLD1){
     digitalWrite(PIN_BLUE_LED, HIGH);
@@ -107,8 +92,23 @@ void loop() {
     digitalWrite(PIN_GREEN_LED, LOW);
     ambience = "Day";
   }
+  
+  // if button was pressed but is not hold over multiple iterations or
+  // got already pressed and the interval since the last press >= 5000ms 
+  if((!btnLastState && btnState) || (lastTransmissionTime > 0 && millis() - lastTransmissionTime >= RETRANSMIT_DELAY)){
+
+    // print ambience string and photo resistor value to serial
+    Serial.print("Send Data: ");          // send data (1)
+    Serial.print(ambience);               // send data (2)
+    Serial.print(" (");                   // send data (3)
+    Serial.print(photoResistorValue);     // send data (4)
+    Serial.println(")");                  // send data (5)
+
+    // reset last transmission time
+    lastTransmissionTime = millis();
+  }
  
-  // store the button state value from the last iteration  (debounced value)
+  // store the button state value from the last iteration (debounced value)
   btnLastState = btnState; 
 
   // store the button read value from the last iteration (raw read value)
