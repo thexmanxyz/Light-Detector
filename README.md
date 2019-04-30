@@ -12,6 +12,16 @@ Circuit image created with [Fritzing](http://fritzing.org/).
 
 ![1](/Circuit.png)
 
+Part list:
+ * 4 x 220Ω resistor
+ * 1 x 10kΩ (pull-up / pull-down) resistor
+ * 1 x green LED
+ * 1 x blue LED
+ * 1 x red LED
+ * photo resistor
+ * push button
+ * wires
+
 ## Known Issues
 None
 
