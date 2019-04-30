@@ -14,9 +14,9 @@ const unsigned short DEBOUNCE_DELAY = 50;         // the debounce delay to preve
 
 /* Variables */
 
-boolean btnState = false;                // the current pushbutton state (debounced)
-boolean btnLastState = false;            // the last iteration pushbutton state (debounced)
-boolean btnLastRead = false;             // the last iteration pushbutton read state (raw)
+bool btnState = false;                // the current pushbutton state (debounced)
+bool btnLastState = false;            // the last iteration pushbutton state (debounced)
+bool btnLastRead = false;             // the last iteration pushbutton read state (raw)
 
 unsigned long lastTransmissionTime = 0;  // the last transmission time
 unsigned long lastDebounceTime = 0;      // the last button toggle time
@@ -44,7 +44,7 @@ void loop() {
   unsigned int photoResistorValue = analogRead(PIN_PHOTO_RESISTOR);
   
   // read the state of the button (digital)
-  boolean btnRead = digitalRead(PIN_BTN);
+  bool btnRead = digitalRead(PIN_BTN);
 
   // check to see if you the button just got pressed
   // or if the button state changed due to noise
